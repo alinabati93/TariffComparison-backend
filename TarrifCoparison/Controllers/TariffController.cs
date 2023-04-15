@@ -34,11 +34,9 @@ namespace TarrifCoparison.Controllers
 
         // POST api/<TariffController>
         [HttpPost]
-        public IEnumerable<TariffViewModel> Post([FromBody] TariffCalculation filters)
+        public void Post([FromBody] TariffCalculation filters)
         {
-            var tariffDefinitions = _tariffService.GetAll();
-            var tariffs = _tariffService.CalculateTariffAlgorithm(filters, tariffDefinitions);
-            return tariffs;
+            throw new NotImplementedException();
         }
 
         // PUT api/<TariffController>/5
@@ -53,6 +51,15 @@ namespace TarrifCoparison.Controllers
         public void Delete(int id)
         {
             throw new NotImplementedException();
+        }
+
+
+        [HttpPost("TariffList")]
+        public IEnumerable<TariffViewModel> TariffList([FromBody] TariffCalculation filters)
+        {
+            var tariffDefinitions = _tariffService.GetAll();
+            var tariffs = _tariffService.CalculateTariffAlgorithm(filters, tariffDefinitions);
+            return tariffs;
         }
     }
 }
